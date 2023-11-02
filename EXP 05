@@ -1,1 +1,40 @@
+import java.util.*;
 
+public class Expt6 {
+    public static void main(String[] args) {
+        Vector<String> V1 = new Vector<String>();
+        Vector<String> V2 = new Vector<String>();
+        Vector<String> V3 = new Vector<String>();
+        try {
+            V1.add("box");
+            V1.add("60");
+            V1.add("90");
+
+            V2.add("pencil box");
+            V2.add("70");
+            V2.add("7.0");
+
+            V1.add("mango");
+            V1.add("cherry");
+
+            System.out.println("First Vector: " + V1);
+            System.out.println("First Vector element: " + V1.get(0));
+            System.out.println("Third element in first vector: " + V1.elementAt(3));
+
+            System.out.println();
+            System.out.println("Second Vector: " + V2);
+
+            if (V3.isEmpty()) {
+                V3.add("Manish");
+            }
+
+            System.out.println();
+            System.out.println("Third Vector: " + V3);
+            System.out.println("Size of first vector: " + V1.size());
+            System.out.println("Capacity of first vector: " + V1.capacity());
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    }
+}
