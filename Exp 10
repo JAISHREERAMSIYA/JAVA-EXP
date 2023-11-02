@@ -1,31 +1,58 @@
-import java.lang.Exception;
-class MyException extends Exception
-{
-    MyException(String Message)
-    {
-        super(Message);
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Handling {
+    public static double sum(ArrayList<Double> numbers) {
+        if (numbers.isEmpty()) {
+            return 0;
+        }
+        double total = 0;
+        for (double number : numbers) {
+            total += number;
+        }
+        return total;
     }
-}
-class TestmyException1 
-{
-    public static void main(String[] args)
-    {
-        int x=5, y=1000;
-        try{
-            float z = (x )/(y);
-            if(z < 0.01)
-            {
-                throw new MyException("Number is too small");
+
+    public static double[] calculate_scores(ArrayList<Double> numbers) {
+        double average = sum(numbers) / numbers.size();
+        double sum_deviation = 0;
+        for (double number : numbers) {
+            sum_deviation += Math.pow(number - average, 2);
+        }
+        double standard_deviation = Math.sqrt(sum_deviation / numbers.size());
+        return new double[]{average, standard_deviation};
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Double> numbers = new ArrayList<>();
+
+        System.out.println("Enter values (separate with spaces) or 'done' to calculate scores:");
+
+        while (true) {
+            String input = scanner.next();
+
+            if (input.equalsIgnoreCase("done")) {
+                break;
+            }
+
+            try {
+                double number = Double.parseDouble(input);
+                numbers.add(number);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
             }
         }
-        catch(MyException e)
-        {
-            System.out.println("Caught my exception");
-            System.out.println(e.getMessage());
+
+        if (numbers.isEmpty()) {
+            System.out.println("No values entered.");
+        } else {
+            double[] scores = calculate_scores(numbers);
+            System.out.println("Average: " + scores[0]);
+            System.out.println("Standard Deviation: " + scores[1]);
         }
-        finally
-        {
-            System.out.println("I am always Here");
-        }
-    }    
+
+        scanner.close();
+    }
 }
