@@ -1,1 +1,30 @@
+public class HelloReturn1 {
+    static String msg = " ";
 
+    HelloReturn1() {
+        msg = "Hello World";
+    }
+
+    HelloReturn1(String str) {
+        System.out.println("In Overload Constructor: " + str);
+    }
+
+    void displayHello() {
+        System.out.println("Hello: " + msg);
+    }
+
+    void displayHello(String str2) {
+        System.out.println("Hello: " + str2);
+    }
+
+    public static void main(String args[]) {
+        new HelloReturn1();
+        new HelloReturn1("Overloaded");
+
+        HelloReturn1 h1 = new HelloReturn1();
+        h1.displayHello();
+        h1.displayHello("students");
+
+        System.out.println("Message is: " + msg);
+    }
+}
