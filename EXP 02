@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+class Bank {
+    private String name;
+    private String address;
+    private char acc_type;
+    private float balance;
+
+    Bank() {
+        name = " ";
+        address = " ";
+        acc_type = ' ';
+        balance = 0;
+    }
+
+    void open_account() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your full name: ");
+        name = input.nextLine();
+
+        System.out.print("Enter your address: ");
+        address = input.nextLine();
+
+        System.out.print("What type of account you want to open (S for Saving, C for Current): ");
+        acc_type = input.next().charAt(0);
+
+        System.out.print("Enter how much money you want to deposit: ");
+        balance = input.nextFloat();
+
+        System.out.println("Account Created Successfully");
+    }
+
+    void deposit_money() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter how much money you want to deposit: ");
+        float amount = input.nextFloat();
+        balance += amount;
+        System.out.println("Available Balance: " + balance);
+    }
+
+    void display_account() {
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Type: " + acc_type);
+        System.out.println("Balance: " + balance);
+    }
+
+    void withdraw_money() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter how much money you want to withdraw: ");
+        float amount = input.nextFloat();
+        balance -= amount;
+        System.out.println("Available balance: " + balance);
+    }
+
+    public static void main(String[] args) {
+        int choice;
+        Bank customer = new Bank();
+
+        Scanner input = new Scanner(System.in);
+
+        do {
+            System.out.println("1) Open account");
+            System.out.println("2) Deposit money");
+            System.out.println("3) Withdraw money");
+            System.out.println("4) Display account");
+            System.out.println("5) Exit");
+            System.out.print("Enter your choice: ");
+            choice = input.nextInt();
+
+            switch (choice) {
+                case 1:
+                    customer.open_account();
+                    break;
+                case 2:
+                    customer.deposit_money();
+                    break;
+                case 3:
+                    customer.withdraw_money();
+                    break;
+                case 4:
+                    customer.display_account();
+                    break;
+                case 5:
+                    System.out.println("Exiting the program.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please choose a valid option.");
+            }
+        } while (choice != 5);
+    }
+}
