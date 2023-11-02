@@ -1,1 +1,43 @@
+import java.util.Scanner;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter title: ");
+        String title = scanner.nextLine();
+
+        System.out.println("Enter author: ");
+        String author = scanner.nextLine();
+
+        System.out.println("Enter year of publication: ");
+        int year = scanner.nextInt();
+
+        System.out.println("Enter ISBN: ");
+        String isbn = scanner.next();
+
+        Book book = new Book(title, author, year, isbn);
+        book.display();
+    }
+}
+
+class Book {
+    private String title;
+    private String author;
+    private int year;
+    private String isbn;
+
+    public Book(String title, String author, int year, String isbn) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.isbn = isbn;
+    }
+
+    public void display() {
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author);
+        System.out.println("Year of Publication: " + year);
+        System.out.println("ISBN: " + isbn);
+    }
+}
